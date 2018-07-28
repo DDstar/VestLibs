@@ -19,7 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-//        maven{ url 'http://10.0.100.60:8081/nexus/content/repositories/extra/'}
+        maven{ url '//raw.githubusercontent.com/DDstar/VestLibs/master'}
     }
 }
 

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.home.vesrlibs.R;
 
+
 public class SplashActivity extends BaseActivity {
 
     TextView tvWelcome;
