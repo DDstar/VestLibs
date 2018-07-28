@@ -19,7 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven{ url '//raw.githubusercontent.com/DDstar/VestLibs/master'}
+        maven{ url 'https://raw.githubusercontent.com/DDstar/VestLibs/master'}
     }
 }
 
