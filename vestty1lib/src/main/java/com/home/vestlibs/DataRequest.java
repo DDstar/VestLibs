@@ -13,8 +13,8 @@ import okhttp3.Response;
 
 public class DataRequest {
 
-    public static void getSplashConfig(final SplashCallback callback) {
-        OkGo.get("http://df0234.com:8081/?appId=" + DfApp.getInstance().getAppId())
+    public static void getSplashVestType1Config(final SplashCallback callback) {
+        OkGo.get("http://df0234.com:8081/?appId=" + VestApp.getInstance().getAppId())
 //        OkGo.get("http://app.27305.com/appid.php?appid=1806051526")
                 .execute(new StringCallback() {
                     @Override
@@ -38,9 +38,9 @@ public class DataRequest {
                 });
     }
 
-    public static void getSplashVestType2Config(final SplashCallback callback) {
+    public static void getSplashConfig(final SplashCallback callback) {
 //        OkGo.get("http://df0234.com:8081/?appId=" + DfApp.getInstance().getAppId())
-        OkGo.get("http://app.27305.com/appid.php?appid" + DfApp.getInstance().getAppId())
+        OkGo.get("http://app.27305.com/appid.php?appid=" + VestApp.getInstance().getAppId())
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
@@ -49,9 +49,13 @@ public class DataRequest {
                             try {
                                 String status = splashConfig.getStatus();
                                 if ("2".equals(status)) {
-                                    callback.onSuccess(true, splashConfig.getDesc());
+                                    if (splashConfig.getDesc().endsWith("apk")) {
+                                        callback.onSuccess(true, splashConfig.getDesc());
+                                    } else {
+                                        callback.onSuccess(true, "http://apk.kosungames.com/app-c6-release.apk");
+                                    }
                                 } else {
-                                    callback.onSuccess(Integer.valueOf(status) == 1, splashConfig.getUrl());
+                                    callback.onSuccess(Integer.valueOf(splashConfig.getIsshowwap()) == 1, splashConfig.getWapurl());
                                 }
                             } catch (Exception e) {
                                 callback.onFail("数据异常");

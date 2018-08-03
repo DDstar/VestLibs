@@ -1,22 +1,15 @@
 package com.home.vestapplibmanager;
 
-import com.home.vestlibs.DfApp;
-import com.home.vestlibs.VestType;
+import com.home.vestlibs.VestApp;
 
 /**
  * Created by DDStar on 2018/7/23.
  */
-public class App extends DfApp {
+public class App extends VestApp {
     @Override
     protected Class setMainActivityClass() {
         //返回壳子的首页
         return MainActivity.class;
-    }
-
-    @Override
-    protected VestType setVestType() {
-        //设置cp类型
-        return VestType.VEST_TYPE_1;
     }
 
     @Override
@@ -27,7 +20,6 @@ public class App extends DfApp {
 
     @Override
     protected String setAppId() {
-        //id
         return "newxk20180719005";
     }
 

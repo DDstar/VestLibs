@@ -9,22 +9,17 @@ android {
         versionName "1.0.0"
     }
 }
-ext {
-    PUBLISH_GROUP_ID = 'com.extra.dflib'
-    PUBLISH_ARTIFACT_ID = 'dftools'
-    PUBLISH_VERSION = android.defaultConfig.versionName
-}
 uploadArchives {
     repositories {
         mavenDeployer {
             snapshotRepository(url: MAVEN_REPO_SNAPSHOT_URL) {
-                authentication(userName:MAVEN_USERNAME, password: MAVEN_PASSWORD)
+                authentication(userName: MAVEN_USERNAME, password: MAVEN_PASSWORD)
             }
             repository(url: MAVEN_REPO_RELEASE_URL) {
-                authentication(userName:MAVEN_USERNAME, password: MAVEN_PASSWORD)
+                authentication(userName: MAVEN_USERNAME, password: MAVEN_PASSWORD)
             }
             pom.project {
-                version PUBLISH_VERSION
+                version android.defaultConfig.versionName
                 artifactId PUBLISH_ARTIFACT_ID
                 packaging 'aar'
                 name 'dftool-lib'

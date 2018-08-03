@@ -7,10 +7,10 @@ import com.lzy.okgo.OkGo;
 /**
  * Created by DDStar on 2018/7/19.
  */
-public abstract class DfApp extends Application {
+public abstract class VestApp extends Application {
     private Class mainClass;
     private int splashRes;
-    private static DfApp instance;
+    private static VestApp instance;
     private String appId;
     private String applicationId;
 
@@ -23,7 +23,7 @@ public abstract class DfApp extends Application {
         return appId;
     }
 
-    public static DfApp getInstance() {
+    public static VestApp getInstance() {
         return instance;
     }
 

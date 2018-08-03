@@ -44,7 +44,7 @@ public class WebbbActivity extends BaseActivity {
                 .go(url1);
         WebSettings webSettings = mAgentWeb.getWebCreator().getWebView().getSettings();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webSettings.setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 // 支持javascript
         webSettings.setJavaScriptEnabled(true);
