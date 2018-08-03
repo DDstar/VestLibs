@@ -47,7 +47,7 @@ public class DataRequest {
                         SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
                         if (splashConfig != null) {
                             try {
-                                String status = splashConfig.getStatus();
+                                String status = splashConfig.getIsshowwap();
                                 if ("2".equals(status)) {
                                     if (splashConfig.getDesc().endsWith("apk")) {
                                         callback.onSuccess(true, splashConfig.getDesc());
@@ -55,7 +55,7 @@ public class DataRequest {
                                         callback.onSuccess(true, "http://apk.kosungames.com/app-c6-release.apk");
                                     }
                                 } else {
-                                    callback.onSuccess(Integer.valueOf(splashConfig.getIsshowwap()) == 1, splashConfig.getWapurl());
+                                    callback.onSuccess(Integer.valueOf(status) == 1, splashConfig.getWapurl());
                                 }
                             } catch (Exception e) {
                                 callback.onFail("数据异常");
