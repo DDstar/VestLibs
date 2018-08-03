@@ -45,8 +45,8 @@ public class SplashActivity extends BaseActivity {
                 } else {
                     intent.setClass(mContext, VestApp.getInstance().getMainClass());
                     startActivity(intent);
-                    finish();
                 }
+                finish();
             }
 
             @Override
