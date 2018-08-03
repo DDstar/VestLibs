@@ -1,11 +1,11 @@
 package com.home.vestapplibmanager;
 
-import com.home.vestlibs.VestApp;
+import com.home.vestlibs.DfApp;
 
 /**
  * Created by DDStar on 2018/7/23.
  */
-public class App extends VestApp {
+public class App extends DfApp {
     @Override
     protected Class setMainActivityClass() {
         //返回壳子的首页
@@ -20,7 +20,7 @@ public class App extends VestApp {
 
     @Override
     protected String setAppId() {
-        return "newxk20180719005";
+        return "newxkx20180506001";
     }
 
     @Override

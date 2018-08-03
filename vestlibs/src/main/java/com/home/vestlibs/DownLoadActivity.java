@@ -48,6 +48,7 @@ public class DownLoadActivity extends BaseActivity {
                     @Override
                     public void onSuccess(File file, Call call, Response response) {
                         FileUtils.installApk(DownLoadActivity.this, file);
+                        finish();
                     }
 
                     @Override
