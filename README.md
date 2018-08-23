@@ -7,7 +7,7 @@
        }
    }
    ```
-      * 添加极光配置
+* 添加极光配置
 再android 的defatltConfig添加以下配置
 ```
  manifestPlaceholders = [
