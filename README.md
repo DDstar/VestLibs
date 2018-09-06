@@ -7,11 +7,7 @@
        }
    }
    ```
-   * app的module添加依赖
-   ```
-    implementation 'com.ddstar:vestlibs:1.0.5'
-   ```
-   * 添加极光配置
+* 添加极光配置
 再android 的defatltConfig添加以下配置
 ```
  manifestPlaceholders = [
@@ -20,6 +16,11 @@
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
 ```
+   * app的module添加依赖
+   ```
+    implementation 'com.ddstar:vestlibs:1.0.8'
+   ```
+
 * 自定义Application并继承DfApp 实现以下方法
 ```
  @Override

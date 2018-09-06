@@ -25,7 +25,7 @@ public class SplashActivity extends BaseActivity {
         image_splash = findViewById(R.id.image_splash);
         image_splash.setImageResource(DfApp.getInstance().getSplashRes());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.REQUEST_INSTALL_PACKAGES}, 10086);
+            requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.REQUEST_INSTALL_PACKAGES, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.REQUEST_INSTALL_PACKAGES}, 10086);
         } else {
             choseNext();
         }
@@ -50,8 +50,8 @@ public class SplashActivity extends BaseActivity {
                 } else {
                     intent.setClass(mContext, DfApp.getInstance().getMainClass());
                     startActivity(intent);
-                    finish();
                 }
+                finish();
             }
 
             @Override
