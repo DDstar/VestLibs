@@ -1,11 +1,11 @@
 package com.home.vestapplibmanager;
 
-import com.home.vestlibs.DfApp;
+import com.home.vestlibs.V211App;
 
 /**
  * Created by DDStar on 2018/7/23.
  */
-public class App extends DfApp {
+public class App extends V211App {
     @Override
     protected Class setMainActivityClass() {
         //返回壳子的首页
@@ -20,12 +20,16 @@ public class App extends DfApp {
 
     @Override
     protected String setAppId() {
-        return "newxk20180803001";
+        return "h5ceshi002";
     }
 
     @Override
-    protected String setApplicationIId() {
-        //返回应用id
-        return BuildConfig.APPLICATION_ID;
+    protected int setDownloadBg() {
+        return super.setDownloadBg();
     }
+//    @Override
+//    protected String setApplicationIId() {
+//        //返回应用id
+//        return BuildConfig.APPLICATION_ID;
+//    }
 }

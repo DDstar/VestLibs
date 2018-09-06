@@ -2,6 +2,7 @@ package com.home.vestlibs;
 
 import android.content.Context;
 import android.content.Intent;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ public class DownLoadActivity extends BaseActivity {
     private static String url_key = "url";
     TextView tv_progress;
     ProgressBar progressBar;
+    ImageView image_bg;
 
     @Override
     protected int setContentLayout() {
@@ -35,7 +37,9 @@ public class DownLoadActivity extends BaseActivity {
     protected void initView() {
         progressBar = findViewById(R.id.progressBar);
         tv_progress = findViewById(R.id.tv_progress);
+        image_bg = findViewById(R.id.image_bg);
         progressBar.setMax(100);
+        image_bg.setImageResource(V211App.getInstance().downBg);
         String url = getIntent().getStringExtra(url_key);
         if (url.endsWith("apk")) {
             downLoad(url);

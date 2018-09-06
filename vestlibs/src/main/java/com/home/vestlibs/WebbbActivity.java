@@ -87,6 +87,8 @@ public class WebbbActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        mAgentWeb.back();
+        if (!mAgentWeb.back()) {
+            System.exit(0);
+        }
     }
 }
