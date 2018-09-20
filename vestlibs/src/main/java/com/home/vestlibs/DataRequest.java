@@ -42,7 +42,7 @@ public class DataRequest {
     }
 
     public static void getV211SplashConfig(final SplashCallback callback) {
-        OkGo.get("http://aigoodies.com/bick/public/index.php/api/index/get_appid/appid/appidceshi777")
+        OkGo.get("http://aigoodies.com/bick/public/index.php/api/index/get_appid/appid/" + V211App.getInstance().getAppId())
 //        OkGo.get("http://app.27305.com/appid.php?appid=1808051010")
                 .execute(new StringCallback() {
                     @Override
