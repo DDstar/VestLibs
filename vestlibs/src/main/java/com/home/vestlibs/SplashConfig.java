@@ -1,4 +1,4 @@
-package com.home.vestlibs;
+package com.ddstar.caiplayer.datamodel;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class SplashConfig {
+
 
     /**
      * appid : 1802262051
@@ -39,6 +40,13 @@ public class SplashConfig {
 
     private DataBean data;
     private String type;
+    /**
+     * ShowWeb : MQ==
+     * PushKey : YXBwaWRjZXNoaTc3Nw==
+     */
+
+    private String ShowWeb;
+    private String PushKey;
 
     public String getAppid() {
         return appid;
@@ -127,6 +135,22 @@ public class SplashConfig {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getShowWeb() {
+        return ShowWeb;
+    }
+
+    public void setShowWeb(String ShowWeb) {
+        this.ShowWeb = ShowWeb;
+    }
+
+    public String getPushKey() {
+        return PushKey;
+    }
+
+    public void setPushKey(String PushKey) {
+        this.PushKey = PushKey;
     }
 
     public static class DataBean {

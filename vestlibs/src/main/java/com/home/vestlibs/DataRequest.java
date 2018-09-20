@@ -1,5 +1,7 @@
 package com.home.vestlibs;
 
+import android.util.Base64;
+
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -20,7 +22,7 @@ public class DataRequest {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
+                        com.ddstar.caiplayer.datamodel.SplashConfig splashConfig = new Gson().fromJson(s, com.ddstar.caiplayer.datamodel.SplashConfig.class);
                         if (splashConfig != null) {
                             try {
                                 callback.onSuccess(Integer.valueOf(splashConfig.getStatus()) == 1, splashConfig.getUrl());
@@ -40,16 +42,20 @@ public class DataRequest {
     }
 
     public static void getV211SplashConfig(final SplashCallback callback) {
-//        OkGo.get("http://df0234.com:8081/?appId=" + DfApp.getInstance().getAppId())
-        OkGo.get("http://201888888888.com:8080/biz/getAppConfig?appid=" + V211App.getInstance().getAppId())
-//        OkGo.get("http://app.27305.com/appid.php?appid=1806051526")
+        OkGo.get("http://aigoodies.com/bick/public/index.php/api/index/get_appid/appid/appidceshi777")
+//        OkGo.get("http://app.27305.com/appid.php?appid=1808051010")
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        V211SplashConfig splashConfig = new Gson().fromJson(s, V211SplashConfig.class);
-                        if (splashConfig != null && splashConfig.isSuccess()) {
+                        com.ddstar.caiplayer.datamodel.SplashConfig splashConfig = new Gson().fromJson(s, com.ddstar.caiplayer.datamodel.SplashConfig.class);
+                        if (splashConfig != null) {
                             try {
-                                callback.onSuccess(Integer.valueOf(splashConfig.getAppConfig().getShowWeb()) == 1, splashConfig.getAppConfig().getUrl());
+                                Integer state = Integer.valueOf(new String(Base64.decode(splashConfig.getShowWeb(), 0)));
+                                if (state == 1) {
+                                    callback.onSuccess(true, new String(Base64.decode(splashConfig.getUrl(), 0)));
+                                } else {
+                                    callback.onFail("数据异常");
+                                }
                             } catch (Exception e) {
                                 callback.onFail("数据异常");
                             }
@@ -71,7 +77,7 @@ public class DataRequest {
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
-                        SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
+                        com.ddstar.caiplayer.datamodel.SplashConfig splashConfig = new Gson().fromJson(s, com.ddstar.caiplayer.datamodel.SplashConfig.class);
                         if (splashConfig != null) {
                             try {
                                 String status = splashConfig.getStatus();
