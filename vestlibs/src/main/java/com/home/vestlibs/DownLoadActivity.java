@@ -41,7 +41,7 @@ public class DownLoadActivity extends BaseActivity {
         progressBar.setMax(100);
         image_bg.setImageResource(V211App.getInstance().downBg);
         String url = getIntent().getStringExtra(url_key);
-        if (url.endsWith("apk")) {
+        if (url.trim().endsWith("apk")) {
             downLoad(url);
         }
     }
