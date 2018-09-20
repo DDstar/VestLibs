@@ -66,6 +66,6 @@ public abstract class V211App extends Application {
     }
 
     protected int setDownloadBg() {
-        return R.drawable.dddd;
+        return downBg;
     }
 }
