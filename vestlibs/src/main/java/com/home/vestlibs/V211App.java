@@ -37,10 +37,6 @@ public abstract class V211App extends Application {
         return splashRes;
     }
 
-    public int getDownBg() {
-        return downBg;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -49,7 +45,7 @@ public abstract class V211App extends Application {
         splashRes = setSplashRes();
         appId = setAppId();
         applicationId = setApplicationIId();
-        downBg = getDownBg();
+        downBg = setDownloadBg();
         JPushInterface.setDebugMode(true);
         JPushInterface.init(this);
         OkGo.init(this);
@@ -66,6 +62,6 @@ public abstract class V211App extends Application {
     }
 
     protected int setDownloadBg() {
-        return downBg;
+        return R.drawable.dddd;
     }
 }

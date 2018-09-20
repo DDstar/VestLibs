@@ -25,7 +25,7 @@ public class App extends V211App {
 
     @Override
     protected int setDownloadBg() {
-        return super.setDownloadBg();
+        return R.mipmap.ic_launcher;
     }
 //    @Override
 //    protected String setApplicationIId() {
