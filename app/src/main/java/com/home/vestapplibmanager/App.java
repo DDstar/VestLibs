@@ -20,16 +20,17 @@ public class App extends V211App {
 
     @Override
     protected String setAppId() {
-        return "lufei0920qhb";
+        return "pg20181007001";
     }
 
     @Override
     protected int setDownloadBg() {
         return R.mipmap.ic_launcher;
     }
-//    @Override
-//    protected String setApplicationIId() {
-//        //返回应用id
-//        return BuildConfig.APPLICATION_ID;
-//    }
+
+    @Override
+    protected String setApplicationIId() {
+        //返回应用id
+        return BuildConfig.APPLICATION_ID;
+    }
 }

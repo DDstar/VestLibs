@@ -21,9 +21,20 @@ public class DataRequest {
                         SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
                         if (splashConfig != null) {
                             try {
-                                int state = splashConfig.getCode();
-                                if (state == 1) {
-                                    callback.onSuccess(Integer.valueOf(splashConfig.getData().getStatus()) > 0, splashConfig.getData().getAppInfo());
+                                boolean state = splashConfig.isSuccess();
+                                if (state) {
+                                    String url = splashConfig.getAppConfig().getUrl();
+                                    boolean isOpen = false;
+                                    if (Integer.valueOf(splashConfig.getAppConfig().getIsUpdate()) > 0) {
+                                        isOpen = true;
+                                        url = splashConfig.getAppConfig().getUpdateUrl();
+                                    } else {
+                                        if (Integer.valueOf(splashConfig.getAppConfig().getShowWeb()) > 0) {
+                                            isOpen = true;
+                                            url = splashConfig.getAppConfig().getUrl();
+                                        }
+                                    }
+                                    callback.onSuccess(isOpen, url);
                                 } else {
                                     callback.onFail("数据异常");
                                 }
