@@ -1,6 +1,4 @@
-package com.ddstar.caiplayer.datamodel;
-
-import com.google.gson.annotations.SerializedName;
+package com.home.vestlibs;
 
 /**
  * Created by GuoJi on 2018/2/28.
@@ -8,117 +6,40 @@ import com.google.gson.annotations.SerializedName;
 
 public class SplashConfig {
 
-
     /**
-     * appid : 1802262051
-     * appname :
-     * isshowwap : 2
-     * wapurl :
-     * status : 1
-     * desc : 成功返回数据
+     * code : 1
+     * msg : 请求成功
+     * time : 1539573744
+     * data : {"appId":"xiaoke20181009004","status":"0","appInfo":"https://www.zg572.com/?intr=app88888"}
      */
 
-    private String appid;
-    private String appname;
-    private String isshowwap;
-    private String wapurl;
-    //    private int status;
-    private String desc;
-    /**
-     * appId : z1001
-     * status : 0
-     * url : http:www.baidu.com
-     */
-
-    private String appId;
-    private String status;
-    private String url;
-    /**
-     * data : {"appid":"baid2018no4","appname":"时时彩（百度）","is_jump":"2","jump_url":"https://apk.update-daquan369app.com/","status":"0"}
-     * type : 200
-     */
-
+    private int code;
+    private String msg;
+    private String time;
     private DataBean data;
-    private String type;
-    /**
-     * ShowWeb : MQ==
-     * PushKey : YXBwaWRjZXNoaTc3Nw==
-     */
 
-    private String ShowWeb;
-    private String PushKey;
-
-    public String getAppid() {
-        return appid;
+    public int getCode() {
+        return code;
     }
 
-    public void setAppid(String appid) {
-        this.appid = appid;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public String getAppname() {
-        return appname;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setAppname(String appname) {
-        this.appname = appname;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public String getIsshowwap() {
-        return isshowwap;
+    public String getTime() {
+        return time;
     }
 
-    public void setIsshowwap(String isshowwap) {
-        this.isshowwap = isshowwap;
-    }
-
-    public String getWapurl() {
-        return wapurl;
-    }
-
-    public void setWapurl(String wapurl) {
-        this.wapurl = wapurl;
-    }
-
-//    public int getStatus() {
-//        return status;
-//    }
-//
-//    public void setStatus(int status) {
-//        this.status = status;
-//    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-
-    public String getAppId() {
-        return appId;
-    }
-
-    public void setAppId(String appId) {
-        this.appId = appId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public DataBean getData() {
@@ -129,86 +50,39 @@ public class SplashConfig {
         this.data = data;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getShowWeb() {
-        return ShowWeb;
-    }
-
-    public void setShowWeb(String ShowWeb) {
-        this.ShowWeb = ShowWeb;
-    }
-
-    public String getPushKey() {
-        return PushKey;
-    }
-
-    public void setPushKey(String PushKey) {
-        this.PushKey = PushKey;
-    }
-
     public static class DataBean {
         /**
-         * appid : baid2018no4
-         * appname : 时时彩（百度）
-         * is_jump : 2
-         * jump_url : https://apk.update-daquan369app.com/
+         * appId : xiaoke20181009004
          * status : 0
+         * appInfo : https://www.zg572.com/?intr=app88888
          */
 
-        @SerializedName("appid")
-        private String appidX;
-        @SerializedName("appname")
-        private String appnameX;
-        private String is_jump;
-        private String jump_url;
-        @SerializedName("status")
-        private String statusX;
+        private String appId;
+        private String status;
+        private String appInfo;
 
-        public String getAppidX() {
-            return appidX;
+        public String getAppId() {
+            return appId;
         }
 
-        public void setAppidX(String appidX) {
-            this.appidX = appidX;
+        public void setAppId(String appId) {
+            this.appId = appId;
         }
 
-        public String getAppnameX() {
-            return appnameX;
+        public String getStatus() {
+            return status;
         }
 
-        public void setAppnameX(String appnameX) {
-            this.appnameX = appnameX;
+        public void setStatus(String status) {
+            this.status = status;
         }
 
-        public String getIs_jump() {
-            return is_jump;
+        public String getAppInfo() {
+            return appInfo;
         }
 
-        public void setIs_jump(String is_jump) {
-            this.is_jump = is_jump;
-        }
-
-        public String getJump_url() {
-            return jump_url;
-        }
-
-        public void setJump_url(String jump_url) {
-            this.jump_url = jump_url;
-        }
-
-        public String getStatusX() {
-            return statusX;
-        }
-
-        public void setStatusX(String statusX) {
-            this.statusX = statusX;
+        public void setAppInfo(String appInfo) {
+            this.appInfo = appInfo;
         }
     }
 }
