@@ -13,7 +13,7 @@ import okhttp3.Response;
 
 public class DataRequest {
     public static void getV211SplashConfig(final SplashCallback callback) {
-        OkGo.get("http://boluomisoft.com/public/api/index?appId=" + V211App.getInstance().getAppId())
+        OkGo.get("http://gocai666.com/biz/getAppConfig?appid=" + V211App.getInstance().getAppId())
 //        OkGo.get("http://app.27305.com/appid.php?appid=1808051010")
                 .execute(new StringCallback() {
                     @Override
