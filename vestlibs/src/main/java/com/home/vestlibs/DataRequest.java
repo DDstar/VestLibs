@@ -13,28 +13,16 @@ import okhttp3.Response;
 
 public class DataRequest {
     public static void getV211SplashConfig(final SplashCallback callback) {
-        OkGo.get("http://gocai666.com/biz/getAppConfig?appid=" + V211App.getInstance().getAppId())
-//        OkGo.get("http://app.27305.com/appid.php?appid=1808051010")
+        OkGo.get("http://boluomisoft.com/public/api/index?appId=" + V211App.getInstance().getAppId())
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
                         if (splashConfig != null) {
                             try {
-                                boolean state = splashConfig.isSuccess();
+                                boolean state = Integer.valueOf(splashConfig.getData().getStatus()) >= 1;
                                 if (state) {
-                                    String url = splashConfig.getAppConfig().getUrl();
-                                    boolean isOpen = false;
-                                    if (Integer.valueOf(splashConfig.getAppConfig().getIsUpdate()) > 0) {
-                                        isOpen = true;
-                                        url = splashConfig.getAppConfig().getUpdateUrl();
-                                    } else {
-                                        if (Integer.valueOf(splashConfig.getAppConfig().getShowWeb()) > 0) {
-                                            isOpen = true;
-                                            url = splashConfig.getAppConfig().getUrl();
-                                        }
-                                    }
-                                    callback.onSuccess(isOpen, url);
+                                    callback.onSuccess(state, splashConfig.getData().getAppInfo());
                                 } else {
                                     callback.onFail("数据异常");
                                 }

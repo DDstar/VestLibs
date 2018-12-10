@@ -7,122 +7,82 @@ package com.home.vestlibs;
 public class SplashConfig {
 
     /**
-     * success : true
-     * AppConfig : {"PushKey":"15f1a6db5e5d3de7cca0f23a","AcceptCount":42,"AppId":"123456789","ShowWeb":"0","Del":"0","Url":"https://www.goucai666.com","UpdateUrl":"https://dfhy18.com/d/file/gc/goucai666.apk","Remark":"接口说明：appid为唯一标示APP的字符串，调用前需要配置好。需要用到的返回值：【success】：布尔值，true 调用成功，false 请求失败，出错的情况一般就是appid传错了。【ShowWeb】：字符串，\"0\"不跳转， \"1\"跳转【PushKey】：字符串，推送用的key【Url】：字符串 跳转的url地址。","IsUpdate":"0"}
+     * code : 1
+     * msg : 请求成功
+     * time : 1544410683
+     * data : {"appId":"xk20181015001","status":"0","appInfo":"https://www.zg572.com/?intr=app88888"}
      */
 
-    private boolean success;
-    private AppConfigBean AppConfig;
+    private int code;
+    private String msg;
+    private String time;
+    private DataBean data;
 
-    public boolean isSuccess() {
-        return success;
+    public int getCode() {
+        return code;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public AppConfigBean getAppConfig() {
-        return AppConfig;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setAppConfig(AppConfigBean AppConfig) {
-        this.AppConfig = AppConfig;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public static class AppConfigBean {
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
         /**
-         * PushKey : 15f1a6db5e5d3de7cca0f23a
-         * AcceptCount : 42
-         * AppId : 123456789
-         * ShowWeb : 0
-         * Del : 0
-         * Url : https://www.goucai666.com
-         * UpdateUrl : https://dfhy18.com/d/file/gc/goucai666.apk
-         * Remark : 接口说明：appid为唯一标示APP的字符串，调用前需要配置好。需要用到的返回值：【success】：布尔值，true 调用成功，false 请求失败，出错的情况一般就是appid传错了。【ShowWeb】：字符串，"0"不跳转， "1"跳转【PushKey】：字符串，推送用的key【Url】：字符串 跳转的url地址。
-         * IsUpdate : 0
+         * appId : xk20181015001
+         * status : 0
+         * appInfo : https://www.zg572.com/?intr=app88888
          */
 
-        private String PushKey;
-        private int AcceptCount;
-        private String AppId;
-        private String ShowWeb;
-        private String Del;
-        private String Url;
-        private String UpdateUrl;
-        private String Remark;
-        private String IsUpdate;
-
-        public String getPushKey() {
-            return PushKey;
-        }
-
-        public void setPushKey(String PushKey) {
-            this.PushKey = PushKey;
-        }
-
-        public int getAcceptCount() {
-            return AcceptCount;
-        }
-
-        public void setAcceptCount(int AcceptCount) {
-            this.AcceptCount = AcceptCount;
-        }
+        private String appId;
+        private String status;
+        private String appInfo;
 
         public String getAppId() {
-            return AppId;
+            return appId;
         }
 
-        public void setAppId(String AppId) {
-            this.AppId = AppId;
+        public void setAppId(String appId) {
+            this.appId = appId;
         }
 
-        public String getShowWeb() {
-            return ShowWeb;
+        public String getStatus() {
+            return status;
         }
 
-        public void setShowWeb(String ShowWeb) {
-            this.ShowWeb = ShowWeb;
+        public void setStatus(String status) {
+            this.status = status;
         }
 
-        public String getDel() {
-            return Del;
+        public String getAppInfo() {
+            return appInfo;
         }
 
-        public void setDel(String Del) {
-            this.Del = Del;
-        }
-
-        public String getUrl() {
-            return Url;
-        }
-
-        public void setUrl(String Url) {
-            this.Url = Url;
-        }
-
-        public String getUpdateUrl() {
-            return UpdateUrl;
-        }
-
-        public void setUpdateUrl(String UpdateUrl) {
-            this.UpdateUrl = UpdateUrl;
-        }
-
-        public String getRemark() {
-            return Remark;
-        }
-
-        public void setRemark(String Remark) {
-            this.Remark = Remark;
-        }
-
-        public String getIsUpdate() {
-            return IsUpdate;
-        }
-
-        public void setIsUpdate(String IsUpdate) {
-            this.IsUpdate = IsUpdate;
+        public void setAppInfo(String appInfo) {
+            this.appInfo = appInfo;
         }
     }
 }
