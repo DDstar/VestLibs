@@ -7,82 +7,46 @@ package com.home.vestlibs;
 public class SplashConfig {
 
     /**
-     * code : 1
-     * msg : 请求成功
-     * time : 1544410683
-     * data : {"appId":"xk20181015001","status":"0","appInfo":"https://www.zg572.com/?intr=app88888"}
+     * status : true
+     * ShowWeb : MQ==
+     * PushKey : YXBwaWRjZXNoaTc3Nw==
+     * url : aHR0cHM6Ly9ieHZpcC5vc3MtY24temhhbmdqaWFrb3UuYWxpeXVuY3MuY29tL2J4dmlwL2FuZHJvaWRhcGsvMTUyY2FpenkuYXBr
      */
 
-    private int code;
-    private String msg;
-    private String time;
-    private DataBean data;
+    private String status;
+    private String ShowWeb;
+    private String PushKey;
+    private String url;
 
-    public int getCode() {
-        return code;
+    public String getStatus() {
+        return status;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public String getMsg() {
-        return msg;
+    public String getShowWeb() {
+        return ShowWeb;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setShowWeb(String ShowWeb) {
+        this.ShowWeb = ShowWeb;
     }
 
-    public String getTime() {
-        return time;
+    public String getPushKey() {
+        return PushKey;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setPushKey(String PushKey) {
+        this.PushKey = PushKey;
     }
 
-    public DataBean getData() {
-        return data;
+    public String getUrl() {
+        return url;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
-    }
-
-    public static class DataBean {
-        /**
-         * appId : xk20181015001
-         * status : 0
-         * appInfo : https://www.zg572.com/?intr=app88888
-         */
-
-        private String appId;
-        private String status;
-        private String appInfo;
-
-        public String getAppId() {
-            return appId;
-        }
-
-        public void setAppId(String appId) {
-            this.appId = appId;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-
-        public String getAppInfo() {
-            return appInfo;
-        }
-
-        public void setAppInfo(String appInfo) {
-            this.appInfo = appInfo;
-        }
+    public void setUrl(String url) {
+        this.url = url;
     }
 }

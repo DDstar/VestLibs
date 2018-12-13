@@ -88,9 +88,9 @@ public class FileUtils {
 //        }
         //马甲12主包
         for (PackageInfo pi : installedPackages) {
+//            if (pi.packageName.equals("com.bxvip.app.bx152zy")) {
             if (pi.packageName.equals("com.bxvip.app.bx152zy")) {
                 Intent intent = pm.getLaunchIntentForPackage("com.bxvip.app.bx152zy");
-
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 context.startActivity(intent);
                 return true;
