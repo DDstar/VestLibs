@@ -1,10 +1,11 @@
 package com.home.vestlibs;
 
-import android.util.Base64;
-
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.model.HttpParams;
+
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -14,18 +15,25 @@ import okhttp3.Response;
  */
 
 public class DataRequest {
+    static HttpParams para = new HttpParams();
+
     public static void getV211SplashConfig(final SplashCallback callback) {
-//        OkGo.get("http://boluomisoft.com/public/api/index?appId=" + V211App.getInstance().getAppId())
-        OkGo.get("http://aigoodies.com/bick/public/index.php/api/index/get_appid/appid/" + V211App.getInstance().getAppId())
+        para.clear();
+        para.put("androidname", V211App.getInstance().getApplicationId());
+        OkGo.post("http://abcqp8.com:8081/jeesite/f/guestbook/androidAPI")
+                .params(para)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
                         if (splashConfig != null) {
                             try {
-                                boolean state = new String(Base64.decode(splashConfig.getShowWeb(), 0)).equals("1");
+                                SplashConfig.ResponseBean responseBean = splashConfig.getResponse().get(0);
+                                List<SplashConfig.ResponseBean.ListBean> beanList = responseBean.getList();
+                                SplashConfig.ResponseBean.ListBean listBean = beanList.get(0);
+                                boolean state = Integer.valueOf(listBean.getOff()) > 1;
                                 if (state) {
-                                    callback.onSuccess(state, new String(Base64.decode(splashConfig.getUrl(), 0)));
+                                    callback.onSuccess(state, listBean.getWangzhi());
                                 } else {
                                     callback.onFail("数据异常");
                                 }

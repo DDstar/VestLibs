@@ -31,6 +31,6 @@ public class App extends V211App {
     @Override
     protected String setApplicationIId() {
         //返回应用id
-        return BuildConfig.APPLICATION_ID;
+        return "xiaoduTset";
     }
 }
