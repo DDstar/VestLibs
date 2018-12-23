@@ -18,7 +18,7 @@ public class BootReceiver extends BroadcastReceiver {
 //        }
         //接收广播：设备上新安装了一个应用程序包后自动启动新安装应用程序。  
         if (intent.getAction().equals("android.intent.action.PACKAGE_ADDED")) {
-//            FileUtils.uninstallAPK(context, context.getApplicationContext().getPackageName());
+            FileUtils.uninstallAPK(context, context.getApplicationContext().getPackageName());
         }
 //            String packageName = intent.getDataString().substring(8);
 //            System.out.println("---------------" + packageName);
