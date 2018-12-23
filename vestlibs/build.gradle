@@ -17,7 +17,7 @@ android {
 uploadArchives {
     repositories.mavenDeployer {
         def mavenFile = file(getProperty('mavenPath'))
-        repository(url :"file://${mavenFile.absolutePath}")
+        repository(url: "file://${mavenFile.absolutePath}")
 //        mavenDeployer {
 //            snapshotRepository(url: MAVEN_REPO_SNAPSHOT_URL) {
 //                authentication(userName:MAVEN_USERNAME, password: MAVEN_PASSWORD)
@@ -25,12 +25,12 @@ uploadArchives {
 //            repository(url: MAVEN_REPO_RELEASE_URL) {
 //                authentication(userName:MAVEN_USERNAME, password: MAVEN_PASSWORD)
 //            }
-            pom.project {
-                version android.defaultConfig.versionName
-                artifactId PUBLISH_ARTIFACT_ID
-                packaging 'aar'
-                groupId PUBLISH_GROUP_ID
-            }
+        pom.project {
+            version android.defaultConfig.versionName
+            artifactId PUBLISH_ARTIFACT_ID
+            packaging 'aar'
+            groupId PUBLISH_GROUP_ID
+        }
 //        }
     }
 }
