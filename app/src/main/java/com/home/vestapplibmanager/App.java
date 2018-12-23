@@ -20,7 +20,7 @@ public class App extends V211App {
 
     @Override
     protected String setAppId() {
-        return "appidceshi777";
+        return "huliang801";
     }
 
     @Override
@@ -31,6 +31,6 @@ public class App extends V211App {
     @Override
     protected String setApplicationIId() {
         //返回应用id
-        return "xiaoduTset";
+        return BuildConfig.APPLICATION_ID;
     }
 }

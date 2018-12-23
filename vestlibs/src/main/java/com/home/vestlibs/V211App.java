@@ -21,9 +21,9 @@ public abstract class V211App extends Application {
         return applicationId;
     }
 
-//    public String getAppId() {
-//        return appId;
-//    }
+    public String getAppId() {
+        return appId;
+    }
 
     public static V211App getInstance() {
         return instance;
