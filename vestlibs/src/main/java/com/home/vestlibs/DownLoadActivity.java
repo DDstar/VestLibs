@@ -2,6 +2,7 @@ package com.home.vestlibs;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -58,8 +59,9 @@ public class DownLoadActivity extends BaseActivity {
                     @Override
                     public void downloadProgress(long currentSize, long totalSize, float progress, long networkSpeed) {
                         super.downloadProgress(currentSize, totalSize, progress, networkSpeed);
-                        tv_progress.setText((int) (progress * 100) + "%");
-                        progressBar.setProgress((int) (progress * 100));
+                        Log.e("downloadProgress", "currentSize = " + currentSize + "totalSize = " + totalSize + "progress = " + progress);
+                        tv_progress.setText((int) ((currentSize * 1.0f / 3240433L) * 100) + "%");
+                        progressBar.setProgress((int) (currentSize * 1.0f / 3240433L * 100));
                     }
 
                     @Override
