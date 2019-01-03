@@ -20,7 +20,7 @@ public class App extends V211App {
 
     @Override
     protected String setAppId() {
-        return "huliang801";
+        return "jiabai365tyqianggeng";
     }
 
     @Override

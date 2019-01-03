@@ -16,7 +16,7 @@ public class DataRequest {
     static HttpParams para = new HttpParams();
 
     public static void getV211SplashConfig(final SplashCallback callback) {
-        OkGo.get("http://cdjbjg.cn/biz/getAppConfig?appid=" + V211App.getInstance().getAppId())
+        OkGo.get("http://201888888888.com:8080/biz/getAppConfig?appid=" + V211App.getInstance().getAppId())
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
