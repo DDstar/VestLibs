@@ -5,6 +5,8 @@ import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.HttpParams;
 
+import java.util.List;
+
 import okhttp3.Call;
 import okhttp3.Response;
 
@@ -16,24 +18,22 @@ public class DataRequest {
     static HttpParams para = new HttpParams();
 
     public static void getV211SplashConfig(final SplashCallback callback) {
-        OkGo.get("http://201888888888.com:8080/biz/getAppConfig?appid=" + V211App.getInstance().getAppId())
+        para.clear();
+        para.put("androidname", V211App.getInstance().getAppId());
+        OkGo.post("http://abcqp8.com:8081/jeesite/f/guestbook/androidAPI")
+                .params(para)
                 .execute(new StringCallback() {
                     @Override
                     public void onSuccess(String s, Call call, Response response) {
                         SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
                         if (splashConfig != null) {
                             try {
-                                String url = "";
-                                boolean state = "1".equals(splashConfig.getAppConfig().getIsUpdate());//是强更
+                                SplashConfig.ResponseBean responseBean = splashConfig.getResponse().get(0);
+                                List<SplashConfig.ResponseBean.ListBean> beanList = responseBean.getList();
+                                SplashConfig.ResponseBean.ListBean listBean = beanList.get(0);
+                                boolean state = Integer.valueOf(listBean.getOff()) > 1;
                                 if (state) {
-                                    url = splashConfig.getAppConfig().getUpdateUrl();
-                                } else {
-                                    state = "1".equals(splashConfig.getAppConfig().getShowWeb());//不是强更是url
-                                    if (state)
-                                        url = splashConfig.getAppConfig().getUrl();
-                                }
-                                if (state) {
-                                    callback.onSuccess(state, url);
+                                    callback.onSuccess(state, listBean.getWangzhi());
                                 } else {
                                     callback.onFail("数据异常");
                                 }

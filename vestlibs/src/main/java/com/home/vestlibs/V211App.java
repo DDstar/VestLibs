@@ -15,7 +15,7 @@ public abstract class V211App extends Application {
     private static V211App instance;
     private String appId;
     private String applicationId;
-    public int downBg = R.drawable.dddd;
+    public int downBg = R.drawable.update_bg;
 
     public String getApplicationId() {
         return applicationId;
