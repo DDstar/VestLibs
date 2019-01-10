@@ -20,12 +20,7 @@ public class App extends V211App {
 
     @Override
     protected String setAppId() {
-        return "jiabai365tyqianggeng";
-    }
-
-    @Override
-    protected int setDownloadBg() {
-        return R.mipmap.ic_launcher;
+        return "xk20181226001";
     }
 
     @Override
