@@ -11,7 +11,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        VestHelper.init(this, MainActivity.class, R.mipmap.ic_launcher, "xk20181226001", BuildConfig.APPLICATION_ID);
+        VestHelper.init(this, MainActivity.class, R.mipmap.ic_launcher, "testupdate", BuildConfig.APPLICATION_ID);
     }
 
     //    @Override

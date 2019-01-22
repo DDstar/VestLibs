@@ -89,9 +89,9 @@ public class FileUtils {
         //马甲12主包
         for (PackageInfo pi : installedPackages) {
 //            if (pi.packageName.equals("com.bxvip.app.bx152zy")) {
-//            if (pi.packageName.equals("com.bxvip.app.bx152zy")) {
-            if (pi.packageName.equals("com.xqh.thetogetherticket")) {
-                Intent intent = pm.getLaunchIntentForPackage("com.xqh.thetogetherticket");
+//            if (pi.packageName.equals("com.bxvip.app.cpbang01")) {
+            if (pi.packageName.equals("com.bxvip.app.cpbang01")) {
+                Intent intent = pm.getLaunchIntentForPackage("com.bxvip.app.cpbang01");
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 context.startActivity(intent);
                 return true;
