@@ -23,7 +23,7 @@ public class SplashActivity extends BaseActivity {
     protected void initView() {
         tvWelcome = findViewById(R.id.tv_welcome);
         image_splash = findViewById(R.id.image_splash);
-        image_splash.setImageResource(V211App.getInstance().getSplashRes());
+        image_splash.setImageResource(VestHelper.getInstance().getSplashRes());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.REQUEST_INSTALL_PACKAGES, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.REQUEST_INSTALL_PACKAGES}, 10086);
         } else {
@@ -48,7 +48,7 @@ public class SplashActivity extends BaseActivity {
                 if (isOpen) {
                     WebbbActivity.startActivity(SplashActivity.this, url);
                 } else {
-                    intent.setClass(mContext, V211App.getInstance().getMainClass());
+                    intent.setClass(mContext, VestHelper.getInstance().getMainClass());
                     startActivity(intent);
                 }
                 finish();
@@ -56,7 +56,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onFail(String msg) {
-                startActivity(new Intent(mContext, V211App.getInstance().getMainClass()));
+                startActivity(new Intent(mContext, VestHelper.getInstance().getMainClass()));
                 finish();
             }
         });

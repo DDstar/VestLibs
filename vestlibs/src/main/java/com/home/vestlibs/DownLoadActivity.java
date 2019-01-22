@@ -39,7 +39,7 @@ public class DownLoadActivity extends BaseActivity {
         tv_progress = findViewById(R.id.tv_progress);
         image_bg = findViewById(R.id.image_bg);
         progressBar.setMax(100);
-        image_bg.setImageResource(V211App.getInstance().downBg);
+        image_bg.setImageResource(VestHelper.getInstance().getDownBg());
         String url = getIntent().getStringExtra(url_key);
         if (url.trim().endsWith("apk")) {
             downLoad(url);

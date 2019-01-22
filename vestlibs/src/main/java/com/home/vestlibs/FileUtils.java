@@ -52,7 +52,7 @@ public class FileUtils {
                 //判断是否是Android N (24)以及更高的版本
                 if (Build.VERSION.SDK_INT >= 24) {
                     i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    uri = FileProvider.getUriForFile(context, V211App.getInstance().getApplicationId() + ".fileprovider", file);
+                    uri = FileProvider.getUriForFile(context, VestHelper.getInstance().getApplicationId() + ".fileprovider", file);
                 } else {
                     i.setFlags(FLAG_ACTIVITY_NEW_TASK);
                     uri = Uri.parse("file://" + file.toString());

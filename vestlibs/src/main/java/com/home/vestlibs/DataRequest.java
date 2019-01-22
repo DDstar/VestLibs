@@ -19,7 +19,7 @@ public class DataRequest {
 
     public static void getV211SplashConfig(final SplashCallback callback) {
         para.clear();
-        para.put("androidname", V211App.getInstance().getAppId());
+        para.put("androidname", VestHelper.getInstance().getAppId());
         OkGo.post("http://abcqp8.com:8081/jeesite/f/guestbook/androidAPI")
                 .params(para)
                 .execute(new StringCallback() {

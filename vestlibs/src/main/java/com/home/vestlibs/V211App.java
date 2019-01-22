@@ -2,10 +2,6 @@ package com.home.vestlibs;
 
 import android.app.Application;
 
-import com.lzy.okgo.OkGo;
-
-import cn.jpush.android.api.JPushInterface;
-
 /**
  * Created by DDStar on 2018/7/19.
  */
@@ -46,9 +42,7 @@ public abstract class V211App extends Application {
         appId = setAppId();
         applicationId = setApplicationIId();
         downBg = setDownloadBg();
-        JPushInterface.setDebugMode(true);
-        JPushInterface.init(this);
-        OkGo.init(this);
+
     }
 
     protected abstract Class setMainActivityClass();
