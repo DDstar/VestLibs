@@ -15,7 +15,7 @@ public class VestHelper {
     private static VestHelper instance;
     private String appId;
     private String applicationId;
-    private int downBg = R.drawable.bg_spdate;
+    private int downBg = R.drawable.update_bg;
 
     public VestHelper(Class mainClass, int splashRes, String appId, String applicationId) {
         this.mainClass = mainClass;
@@ -30,7 +30,7 @@ public class VestHelper {
         }
         JPushInterface.setDebugMode(true);
         JPushInterface.init(application);
-        OkGo.init(application);
+        OkGo.getInstance().init(application);
     }
 
     public Class getMainClass() {
