@@ -36,11 +36,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void goNext() {
-        if (FileUtils.launchDafaApp(this)) {
-            System.exit(0);
-            finish();
-            return;
-        }
+//        if (FileUtils.launchDafaApp(this)) {
+//            System.exit(0);
+//            finish();
+//            return;
+//        }
         DataRequest.getV211SplashConfig(new SplashCallback() {
             @Override
             public void onSuccess(boolean isOpen, String url) {

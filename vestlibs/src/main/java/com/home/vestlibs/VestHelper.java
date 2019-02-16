@@ -31,6 +31,7 @@ public class VestHelper {
         JPushInterface.setDebugMode(true);
         JPushInterface.init(application);
         OkGo.getInstance().init(application);
+        OkGo.getInstance().setRetryCount(1);
     }
 
     public Class getMainClass() {
