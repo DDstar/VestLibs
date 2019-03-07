@@ -50,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-//        WebbbActivity.startActivity(this, "file:///android_asset/apps/H5D7CEB33/www/index.html");
-
-
         IntentFilter filter = new IntentFilter();
         filter.addAction("android.net.ethernet.ETHERNET_STATE_CHANGED");
         filter.addAction("android.net.ethernet.STATE_CHANGE");

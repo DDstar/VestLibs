@@ -24,16 +24,17 @@ public class NetStateReceiver extends BroadcastReceiver {
         NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isAvailable()) {
             int type2 = networkInfo.getType();
+
             String typeName = networkInfo.getTypeName();
             Log.e("networkInfo", "typeName = " + typeName);
             switch (type2) {
-                case 0://移动 网络    2G 3G 4G 都是一样的 实测 mix2s 联通卡
+                case ConnectivityManager.TYPE_MOBILE://移动 网络    2G 3G 4G 都是一样的 实测 mix2s 联通卡
                     mToast.setText("当前是移动网络");
                     break;
-                case 1: //wifi网络
+                case ConnectivityManager.TYPE_WIFI: //wifi网络
                     mToast.setText("当前是wifi网络");
                     break;
-                case 9:  //网线连接
+                case ConnectivityManager.TYPE_ETHERNET:  //网线连接
                     mToast.setText("网线连接");
                     break;
             }

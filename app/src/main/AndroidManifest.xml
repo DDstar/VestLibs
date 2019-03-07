@@ -11,10 +11,11 @@
         android:name=".App"
         android:allowBackup="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppBaseTheme">
         <activity
             android:name=".MainActivity"
-            android:launchMode="standard">
+            android:launchMode="standard"
+            android:theme="@style/Theme.AppCompat">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
 
