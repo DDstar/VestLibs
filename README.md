@@ -19,9 +19,12 @@
 ```
    * app的module添加依赖
    ```
-    implementation 'com.ddstar:vestlibs:1.0.8'
-   ```
 
+    //mjxxx使用
+     implementation ' com.ddstar:vestlibs:4.1.3@aar'
+     //mjqq 使用
+      implementation 'com.ddstar:vestlibs:5.0.4'
+   ```
 * 在application的onCreat方法调用
 ```
  public static void init(Application application, Class mainClass, int splashRes, String appId, String applicationId)
@@ -30,7 +33,7 @@
 * 去掉应用的启动页配置
 库里面已经配置了启动页
 ***
-* 4.1.2 mjxxx
+* 4.1.3 mjxxx
 * 2.10.8 mjxxx 马甲别人
-* 5.0.1 mjqq同事介绍
+* 5.0.3 mjqq同事介绍 待修改
 完美运行
