@@ -2,20 +2,16 @@ package com.home.vestlibs;
 
 import android.app.Application;
 
-import com.lzy.okgo.OkGo;
-
-import cn.jpush.android.api.JPushInterface;
-
 /**
  * Created by DDStar on 2018/7/19.
  */
-public abstract class DfApp extends Application {
+public abstract class V211App extends Application {
     private Class mainClass;
     private int splashRes;
-    private static DfApp instance;
+    private static V211App instance;
     private String appId;
     private String applicationId;
-
+    public int downBg = R.drawable.update_bg;
 
     public String getApplicationId() {
         return applicationId;
@@ -25,7 +21,7 @@ public abstract class DfApp extends Application {
         return appId;
     }
 
-    public static DfApp getInstance() {
+    public static V211App getInstance() {
         return instance;
     }
 
@@ -45,9 +41,8 @@ public abstract class DfApp extends Application {
         splashRes = setSplashRes();
         appId = setAppId();
         applicationId = setApplicationIId();
-        JPushInterface.setDebugMode(true);
-        JPushInterface.init(this);
-        OkGo.init(this);
+        downBg = setDownloadBg();
+
     }
 
     protected abstract Class setMainActivityClass();
@@ -56,5 +51,11 @@ public abstract class DfApp extends Application {
 
     protected abstract String setAppId();
 
-    protected abstract String setApplicationIId();
+    protected String setApplicationIId() {
+        return BuildConfig.APPLICATION_ID;
+    }
+
+    protected int setDownloadBg() {
+        return downBg;
+    }
 }

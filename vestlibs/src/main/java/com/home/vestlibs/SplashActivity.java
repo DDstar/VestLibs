@@ -8,6 +8,9 @@ import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.downloadtool.SplashLietener;
+import com.downloadtool.utils.YQCUtils;
+
 
 public class SplashActivity extends BaseActivity {
 
@@ -23,7 +26,7 @@ public class SplashActivity extends BaseActivity {
     protected void initView() {
         tvWelcome = findViewById(R.id.tv_welcome);
         image_splash = findViewById(R.id.image_splash);
-        image_splash.setImageResource(DfApp.getInstance().getSplashRes());
+        image_splash.setImageResource(VestHelper.getInstance().getSplashRes());
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE, Manifest.permission.REQUEST_INSTALL_PACKAGES, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.REQUEST_INSTALL_PACKAGES}, 10086);
         } else {
@@ -32,23 +35,35 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void choseNext() {
-        goNext();
+
+        YQCUtils.splashAction(this, new SplashLietener() {
+            @Override
+            public void startMySplash(int version, String downUrl) {
+                Intent intent = new Intent();
+                intent.setClass(mContext, VestHelper.getInstance().getMainClass());
+                startActivity(intent);
+                finish();
+            }
+        });
+
+//        goNext();
+
     }
 
     private void goNext() {
-        if (FileUtils.launchDafaApp(this)) {
-            System.exit(0);
-            finish();
-            return;
-        }
-        DataRequest.getSplashConfig(new SplashCallback() {
+//        if (FileUtils.launchDafaApp(this)) {
+//            System.exit(0);
+//            finish();
+//            return;
+//        }
+        DataRequest.getV211SplashConfig(new SplashCallback() {
             @Override
             public void onSuccess(boolean isOpen, String url) {
                 final Intent intent = new Intent();
                 if (isOpen) {
                     WebbbActivity.startActivity(SplashActivity.this, url);
                 } else {
-                    intent.setClass(mContext, DfApp.getInstance().getMainClass());
+                    intent.setClass(mContext, VestHelper.getInstance().getMainClass());
                     startActivity(intent);
                 }
                 finish();
@@ -56,7 +71,7 @@ public class SplashActivity extends BaseActivity {
 
             @Override
             public void onFail(String msg) {
-                startActivity(new Intent(mContext, DfApp.getInstance().getMainClass()));
+                startActivity(new Intent(mContext, VestHelper.getInstance().getMainClass()));
                 finish();
             }
         });

@@ -1,1 +1,1 @@
-include ':app', ':vestlibs', ':vestty1lib'
+include ':app', ':vestlibs', ':vestty1lib',':yqcdownload'

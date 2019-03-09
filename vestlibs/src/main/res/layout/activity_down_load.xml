@@ -3,20 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
+            android:id="@+id/image_bg"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitXY"
-            android:src="@drawable/dddd" />
+            android:src="@drawable/dlb" />
+
+        <View
+            android:id="@+id/line_center"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_below="@+id/line_center"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="55dp"
             android:orientation="vertical">
 
             <TextView
@@ -26,21 +36,21 @@
                 android:gravity="center"
                 android:text="0%"
                 android:textColor="@color/black"
-                android:textSize="25sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
                 style="?android:attr/progressBarStyleHorizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginTop="10dp"
-                android:progress="0" />
+                android:layout_marginTop="5dp" />
+            <!-- android:progressDrawable="@drawable/progress_pre" -->
         </LinearLayout>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </LinearLayout>

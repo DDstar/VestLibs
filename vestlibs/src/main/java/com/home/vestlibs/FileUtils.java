@@ -52,7 +52,7 @@ public class FileUtils {
                 //判断是否是Android N (24)以及更高的版本
                 if (Build.VERSION.SDK_INT >= 24) {
                     i.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    uri = FileProvider.getUriForFile(context, DfApp.getInstance().getApplicationId() + ".fileprovider", file);
+                    uri = FileProvider.getUriForFile(context, VestHelper.getInstance().getApplicationId() + ".fileprovider", file);
                 } else {
                     i.setFlags(FLAG_ACTIVITY_NEW_TASK);
                     uri = Uri.parse("file://" + file.toString());
@@ -75,14 +75,26 @@ public class FileUtils {
     public static boolean launchDafaApp(Context context) {
         PackageManager pm = context.getPackageManager();
         List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
+        //马甲1
         for (PackageInfo pi : installedPackages) {
-            if (pi.packageName.equals("com.bxvip.app.dafa02")) {
-                Intent intent = pm.getLaunchIntentForPackage("com.bxvip.app.dafa02");
+            if (pi.packageName.equals("com.xqh.thetogetherticket")) {
+                Intent intent = pm.getLaunchIntentForPackage("com.xqh.thetogetherticket");
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 context.startActivity(intent);
                 return true;
             }
         }
+        //马甲12主包
+//        for (PackageInfo pi : installedPackages) {
+////            if (pi.packageName.equals("com.bxvip.app.bx152zy")) {
+////            if (pi.packageName.equals("com.bxvip.app.cpbang01")) {
+//            if (pi.packageName.equals("com.bxvip.app.cpbang01")) {
+//                Intent intent = pm.getLaunchIntentForPackage("com.bxvip.app.cpbang01");
+//                intent.addCategory(Intent.CATEGORY_LAUNCHER);
+//                context.startActivity(intent);
+//                return true;
+//            }
+//        }
         return false;
     }
 }

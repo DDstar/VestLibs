@@ -30,8 +30,7 @@ public class WebbbActivity extends BaseActivity {
     protected void initView() {
         View layout = findViewById(R.id.layout);
         String url1 = getIntent().getStringExtra(url_key);
-        url1.replace("https", "http");
-        if (url1.endsWith("apk")) {
+        if (url1.trim().endsWith("apk")) {
             DownLoadActivity.startActivity(this, url1);
             finish();
             return;
@@ -87,6 +86,8 @@ public class WebbbActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        mAgentWeb.back();
+        if (!mAgentWeb.back()) {
+            System.exit(0);
+        }
     }
 }

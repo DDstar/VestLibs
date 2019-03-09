@@ -13,6 +13,7 @@ android {
                 JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "3203ac8db7a18e861cab48bc", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+                vest_id      : "777777"
         ]
     }
     buildTypes {
@@ -30,7 +31,8 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    //    implementation project(':vestlibs')
-    //    implementation 'com.ddstar:vestty1libs:1.0.3'
+    implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
     implementation project(':vestlibs')
+    //    implementation 'com.ddstar:vestlibs:2.0.7'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 }

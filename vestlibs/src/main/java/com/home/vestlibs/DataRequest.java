@@ -1,10 +1,14 @@
 package com.home.vestlibs;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.callback.Callback;
+import com.lzy.okgo.model.HttpParams;
+import com.lzy.okgo.model.Progress;
+import com.lzy.okgo.request.base.Request;
 
-import okhttp3.Call;
 import okhttp3.Response;
 
 /**
@@ -12,46 +16,60 @@ import okhttp3.Response;
  */
 
 public class DataRequest {
+    static HttpParams para = new HttpParams();
 
-    public static void getSplashConfig(final SplashCallback callback) {
-        OkGo.get("http://df0234.com:8081/?appId=" + DfApp.getInstance().getAppId())
-//        OkGo.get("http://app.27305.com/appid.php?appid=1806051526")
-                .execute(new StringCallback() {
+    public static void getV211SplashConfig(final SplashCallback callback) {
+        para.clear();
+        para.put("androidname", VestHelper.getInstance().getAppId());
+        OkGo.<String>post("http://avqp8.com/jeesite/f/guestbook/androidAPI")
+                .params(para)
+                .tag(121)
+                .execute(new Callback<String>() {
                     @Override
-                    public void onSuccess(String s, Call call, Response response) {
-                        SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
-                        if (splashConfig != null) {
-                            try {
-                                callback.onSuccess(Integer.valueOf(splashConfig.getStatus()) == 1, splashConfig.getUrl());
-                            } catch (Exception e) {
-                                callback.onFail("数据异常");
-                            }
-                        } else {
-                            callback.onFail("数据异常");
-                        }
+                    public void onStart(Request<String, ? extends Request> request) {
                     }
 
                     @Override
-                    public void onError(Call call, Response response, Exception e) {
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+
+                    }
+
+                    @Override
+                    public void onCacheSuccess(com.lzy.okgo.model.Response<String> response) {
+                    }
+
+                    @Override
+                    public void onError(com.lzy.okgo.model.Response<String> response) {
                         callback.onFail("数据异常");
                     }
-                });
-    }
 
-    public static void getSplashVestType2Config(final SplashCallback callback) {
-//        OkGo.get("http://df0234.com:8081/?appId=" + DfApp.getInstance().getAppId())
-        OkGo.get("http://app.27305.com/appid.php?appid" + DfApp.getInstance().getAppId())
-                .execute(new StringCallback() {
                     @Override
-                    public void onSuccess(String s, Call call, Response response) {
-                        SplashConfig splashConfig = new Gson().fromJson(s, SplashConfig.class);
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void uploadProgress(Progress progress) {
+
+                    }
+
+                    @Override
+                    public void downloadProgress(Progress progress) {
+
+                    }
+
+                    @Override
+                    public String convertResponse(Response response) throws Throwable {
+                        SplashConfig splashConfig = new Gson().fromJson(response.body().string(), SplashConfig.class);
                         if (splashConfig != null) {
                             try {
-                                String status = splashConfig.getStatus();
-                                if ("2".equals(status)) {
-                                    callback.onSuccess(true, splashConfig.getDesc());
+                                SplashConfig.ResponseBean responseBean = splashConfig.getResponse().get(0);
+                                SplashConfig.ResponseBean.ListBean listBean = responseBean.getList().get(0);
+                                boolean state = Integer.valueOf(listBean.getOff()) != 1;
+                                if (state) {
+                                    callback.onSuccess(state, listBean.getWangzhi());
                                 } else {
-                                    callback.onSuccess(Integer.valueOf(status) == 1, splashConfig.getUrl());
+                                    callback.onFail("数据异常");
                                 }
                             } catch (Exception e) {
                                 callback.onFail("数据异常");
@@ -59,13 +77,9 @@ public class DataRequest {
                         } else {
                             callback.onFail("数据异常");
                         }
-                    }
-
-                    @Override
-                    public void onError(Call call, Response response, Exception e) {
-                        callback.onFail("数据异常");
+                        Log.e("convertResponse", "response = " + response.body().string());
+                        return response.body().string();
                     }
                 });
     }
-
 }
