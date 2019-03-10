@@ -8,8 +8,6 @@ import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.downloadtool.SplashLietener;
-import com.downloadtool.utils.YQCUtils;
 
 
 public class SplashActivity extends BaseActivity {
@@ -36,17 +34,17 @@ public class SplashActivity extends BaseActivity {
 
     private void choseNext() {
 
-        YQCUtils.splashAction(this, new SplashLietener() {
-            @Override
-            public void startMySplash(int version, String downUrl) {
-                Intent intent = new Intent();
-                intent.setClass(mContext, VestHelper.getInstance().getMainClass());
-                startActivity(intent);
-                finish();
-            }
-        });
+//        YQCUtils.splashAction(this, new SplashLietener() {
+//            @Override
+//            public void startMySplash(int version, String downUrl) {
+//                Intent intent = new Intent();
+//                intent.setClass(mContext, VestHelper.getInstance().getMainClass());
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
-//        goNext();
+        goNext();
 
     }
 

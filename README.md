@@ -21,7 +21,7 @@
    ```
 
     //mjxxx使用
-     implementation ' com.ddstar:vestlibs:4.1.3@aar'
+     implementation ' com.ddstar:vestlibs:4.1.5'
      //mjqq 使用
       implementation 'com.ddstar:vestlibs:5.0.4'
    ```
@@ -33,7 +33,7 @@
 * 去掉应用的启动页配置
 库里面已经配置了启动页
 ***
-* 4.1.3 mjxxx
+* 4.1.5 mjxxx
 * 2.10.8 mjxxx 马甲别人
 * 5.0.3 mjqq同事介绍 待修改
 完美运行
