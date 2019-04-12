@@ -86,7 +86,8 @@ public class DataRequest {
     public static void getV211SplashConfig1(final SplashCallback callback) {
         para.clear();
         para.put("applicationId", VestHelper.getInstance().getAppId());
-        para.put("jpushChannel", "default");
+        para.put("jpushChannel", "developer-default");
+        para.put("deviceId", "123456");
         OkGo.<String>post("http://wrap.787165.com/api/switch/check")
                 .params(para)
                 .tag(121)
@@ -127,7 +128,7 @@ public class DataRequest {
                     @Override
                     public String convertResponse(Response response) throws Throwable {
                         SplashConfig2 splashConfig = new Gson().fromJson(response.body().string(), SplashConfig2.class);
-                        if (splashConfig != null && splashConfig.getCode() == 200) {
+                        if (splashConfig != null && splashConfig.getCode() == 0) {
                             try {
                                 int code = splashConfig.getData().getKaiguan();
                                 //0：关  1：强更  2：H5跳转  3：热更新

@@ -74,7 +74,7 @@ public class SplashActivity extends BaseActivity {
 //
 //            }
 //        });
-        DataRequest.getV211SplashConfig(new SplashCallback() {
+        DataRequest.getV211SplashConfig1(new SplashCallback() {
             @Override
             public void onSuccess(boolean isOpen, String url) {
                 final Intent intent = new Intent();
