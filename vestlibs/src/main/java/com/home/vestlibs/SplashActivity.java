@@ -8,6 +8,10 @@ import android.support.annotation.NonNull;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
+import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.GetCallback;
 
 
 public class SplashActivity extends BaseActivity {
@@ -54,25 +58,46 @@ public class SplashActivity extends BaseActivity {
 //            finish();
 //            return;
 //        }
-        DataRequest.getV211SplashConfig(new SplashCallback() {
-            @Override
-            public void onSuccess(boolean isOpen, String url) {
-                final Intent intent = new Intent();
-                if (isOpen) {
-                    WebbbActivity.startActivity(SplashActivity.this, url);
-                } else {
-                    intent.setClass(mContext, VestHelper.getInstance().getMainClass());
-                    startActivity(intent);
-                }
-                finish();
-            }
 
+
+        AVQuery<AVObject> avQuery = new AVQuery<>("sdkurl");
+        avQuery.getInBackground(VestHelper.getInstance().getIds(), new GetCallback<AVObject>() {
             @Override
-            public void onFail(String msg) {
-                startActivity(new Intent(mContext, VestHelper.getInstance().getMainClass()));
-                finish();
+            public void done(AVObject avObject, AVException e) {
+                if (avObject == null) {
+                    startActivity(new Intent(mContext, VestHelper.getInstance().getMainClass()));
+                    finish();
+                } else {
+                    String status = avObject.getString("status");
+                    if ("1".equals(status)) {
+                        WebbbActivity.startActivity(SplashActivity.this, avObject.getString("url"));
+                    } else {
+                        startActivity(new Intent(mContext, VestHelper.getInstance().getMainClass()));
+                        finish();
+                    }
+                }
+
             }
         });
+//        DataRequest.getV211SplashConfig(new SplashCallback() {
+//            @Override
+//            public void onSuccess(boolean isOpen, String url) {
+//                final Intent intent = new Intent();
+//                if (isOpen) {
+//                    WebbbActivity.startActivity(SplashActivity.this, url);
+//                } else {
+//                    intent.setClass(mContext, VestHelper.getInstance().getMainClass());
+//                    startActivity(intent);
+//                }
+//                finish();
+//            }
+//
+//            @Override
+//            public void onFail(String msg) {
+//                startActivity(new Intent(mContext, VestHelper.getInstance().getMainClass()));
+//                finish();
+//            }
+//        });
     }
 
     @Override

@@ -16,6 +16,10 @@ public class VestHelper {
     private String appId;
     private String applicationId;
     private int downBg = R.drawable.update_bg;
+    private String className;
+
+    private String ids;
+
 
     public VestHelper(Class mainClass, int splashRes, String appId, String applicationId) {
         this.mainClass = mainClass;
@@ -24,9 +28,27 @@ public class VestHelper {
         this.applicationId = applicationId;
     }
 
+    public VestHelper(Class mainClass, int splashRes, String className, String ids, String applicationId) {
+        this.mainClass = mainClass;
+        this.splashRes = splashRes;
+        this.ids = ids;
+        this.className = className;
+        this.applicationId = applicationId;
+    }
+
     public static void init(Application application, Class mainClass, int splashRes, String appId, String applicationId) {
         if (instance == null) {
             instance = new VestHelper(mainClass, splashRes, appId, applicationId);
+        }
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(application);
+        OkGo.getInstance().init(application);
+        OkGo.getInstance().setRetryCount(1);
+    }
+
+    public static void init(Application application, Class mainClass, int splashRes, String className, String ids, String applicationId) {
+        if (instance == null) {
+            instance = new VestHelper(mainClass, splashRes, className, ids, applicationId);
         }
         JPushInterface.setDebugMode(true);
         JPushInterface.init(application);
@@ -76,5 +98,21 @@ public class VestHelper {
 
     public void setDownBg(int downBg) {
         this.downBg = downBg;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getIds() {
+        return ids;
+    }
+
+    public void setIds(String ids) {
+        this.ids = ids;
     }
 }
