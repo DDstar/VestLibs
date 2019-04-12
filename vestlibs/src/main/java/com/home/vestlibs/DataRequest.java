@@ -82,4 +82,73 @@ public class DataRequest {
                     }
                 });
     }
+
+    public static void getV211SplashConfig1(final SplashCallback callback) {
+        para.clear();
+        para.put("applicationId", VestHelper.getInstance().getAppId());
+        para.put("jpushChannel", "default");
+        OkGo.<String>post("http://wrap.787165.com/api/switch/check")
+                .params(para)
+                .tag(121)
+                .execute(new Callback<String>() {
+                    @Override
+                    public void onStart(Request<String, ? extends Request> request) {
+                    }
+
+                    @Override
+                    public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+
+                    }
+
+                    @Override
+                    public void onCacheSuccess(com.lzy.okgo.model.Response<String> response) {
+                    }
+
+                    @Override
+                    public void onError(com.lzy.okgo.model.Response<String> response) {
+                        callback.onFail("数据异常");
+                    }
+
+                    @Override
+                    public void onFinish() {
+
+                    }
+
+                    @Override
+                    public void uploadProgress(Progress progress) {
+
+                    }
+
+                    @Override
+                    public void downloadProgress(Progress progress) {
+
+                    }
+
+                    @Override
+                    public String convertResponse(Response response) throws Throwable {
+                        SplashConfig2 splashConfig = new Gson().fromJson(response.body().string(), SplashConfig2.class);
+                        if (splashConfig != null && splashConfig.getCode() == 200) {
+                            try {
+                                int code = splashConfig.getData().getKaiguan();
+                                //0：关  1：强更  2：H5跳转  3：热更新
+                                String apkUrl = splashConfig.getData().getApkUrl();
+                                String webUrl = splashConfig.getData().getWebUrl();
+                                if (code == 1) {
+                                    callback.onSuccess(true, apkUrl);
+                                } else if (code == 2) {
+                                    callback.onSuccess(true, webUrl);
+                                } else {
+                                    callback.onFail("数据异常");
+                                }
+                            } catch (Exception e) {
+                                callback.onFail("数据异常");
+                            }
+                        } else {
+                            callback.onFail("数据异常");
+                        }
+                        Log.e("convertResponse", "response = " + response.body().string());
+                        return response.body().string();
+                    }
+                });
+    }
 }
