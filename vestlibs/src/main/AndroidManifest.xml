@@ -13,9 +13,7 @@
         <activity android:name=".DownLoadActivity" />
         <activity android:name=".WebbbActivity" />
 
-        <receiver
-            android:name=".BootReceiver"
-            android:label="@string/app_name">
+        <receiver android:name=".BootReceiver">
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
