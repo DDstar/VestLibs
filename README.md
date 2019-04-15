@@ -20,7 +20,7 @@
    ```
 
     //mjxxx使用
-     implementation 'com.ddstar:vestlibs:4.1.5'
+     implementation 'com.ddstar:vestlibs:7.0.2'
      //mjqq 使用
       implementation 'com.ddstar:vestlibs:5.0.4'
        //mjmmmm 使用
