@@ -15,7 +15,7 @@ public class VestHelper {
     private static VestHelper instance;
     private String appId;
     private String applicationId;
-    private int downBg = R.drawable.update_bg;
+    private int downBg = R.drawable.bg_152_d;
     private String className;
 
     private String ids;
