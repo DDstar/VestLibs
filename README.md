@@ -40,5 +40,5 @@
 * 2.10.8 mjxxx 马甲别人
 * 5.0.3 mjqq同事介绍 待修改
 * 6.0.1 mjmmmmm leancloud后台
-* 8.0.1 mjttt 152
+* 8.0.2 mjttt 152
 完美运行

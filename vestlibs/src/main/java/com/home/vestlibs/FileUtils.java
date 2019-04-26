@@ -77,8 +77,8 @@ public class FileUtils {
         List<PackageInfo> installedPackages = pm.getInstalledPackages(0);
         //马甲1
         for (PackageInfo pi : installedPackages) {
-            if (pi.packageName.equals("com.xqh.thetogetherticket")) {
-                Intent intent = pm.getLaunchIntentForPackage("com.xqh.thetogetherticket");
+            if (pi.packageName.equals("com.bxvip.app.bx152zy")) {
+                Intent intent = pm.getLaunchIntentForPackage("com.bxvip.app.bx152zy");
                 intent.addCategory(Intent.CATEGORY_LAUNCHER);
                 context.startActivity(intent);
                 return true;

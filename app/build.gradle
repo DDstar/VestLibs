@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "com.home.vestapplibmanager"
+        applicationId "com.ffnewff.lottery"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -32,7 +32,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation 'jp.wasabeef:recyclerview-animators:2.3.0'
-    implementation project(':vestlibs')
+//    implementation project(':vestlibs')
 //    implementation 'com.ddstar:vestlibs:7.0.1'
 //    implementation 'com.ddstar:vestlibs:4.1.3'
 

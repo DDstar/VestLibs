@@ -8,19 +8,8 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.lzy.okgo.OkGo;
-import com.lzy.okgo.callback.Callback;
-import com.lzy.okgo.callback.FileCallback;
-import com.lzy.okgo.model.Progress;
-import com.lzy.okgo.model.Response;
-import com.lzy.okgo.request.base.Request;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,70 +66,70 @@ public class MainActivity extends AppCompatActivity {
 
     private int index;
 
-    private void getDatas() {
-        OkGo.<String>get("https://jsj.lmlm.cn/kindergarten/api/v1/device/parent/78861104083056")
-                .tag(this)
-                .execute(new Callback<String>() {
-                    @Override
-                    public void onStart(Request<String, ? extends Request> request) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Response<String> response) {
-                        String dataResult = null;
-                        try {
-                            dataResult = response.getRawResponse().body().string();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        DataJson dataJson = new Gson().fromJson(dataResult, DataJson.class);
-                        List<String> picList = new ArrayList<>();
-                        for (DataJson.DataBean bean : dataJson.getData()) {
-                            picList.addAll(bean.getFaceList());
-                        }
-//                        picList = picList.subList(0, 100);
-                        ((TextView) (findViewById(R.id.tv_all))).setText(String.format("总数：%d", picList.size()));
-                        downLoad(picList);
-//                        for (String path : picList) {
-//                            downLoad(path);
+//    private void getDatas() {
+//        OkGo.<String>get("https://jsj.lmlm.cn/kindergarten/api/v1/device/parent/78861104083056")
+//                .tag(this)
+//                .execute(new Callback<String>() {
+//                    @Override
+//                    public void onStart(Request<String, ? extends Request> request) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(Response<String> response) {
+//                        String dataResult = null;
+//                        try {
+//                            dataResult = response.getRawResponse().body().string();
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
 //                        }
-
-                    }
-
-                    @Override
-                    public void onCacheSuccess(Response<String> response) {
-
-                    }
-
-                    @Override
-                    public void onError(Response<String> response) {
-
-                    }
-
-                    @Override
-                    public void onFinish() {
-
-                    }
-
-                    @Override
-                    public void uploadProgress(Progress progress) {
-
-                    }
-
-                    @Override
-                    public void downloadProgress(Progress progress) {
-
-                    }
-
-                    @Override
-                    public String convertResponse(okhttp3.Response response) throws Throwable {
-                        return null;
-                    }
-                });
-        //https://jsj.lmlm.cn/kindergarten/api/v1/device/parent/1088916427276288
-    }
+//
+//                        DataJson dataJson = new Gson().fromJson(dataResult, DataJson.class);
+//                        List<String> picList = new ArrayList<>();
+//                        for (DataJson.DataBean bean : dataJson.getData()) {
+//                            picList.addAll(bean.getFaceList());
+//                        }
+////                        picList = picList.subList(0, 100);
+//                        ((TextView) (findViewById(R.id.tv_all))).setText(String.format("总数：%d", picList.size()));
+//                        downLoad(picList);
+////                        for (String path : picList) {
+////                            downLoad(path);
+////                        }
+//
+//                    }
+//
+//                    @Override
+//                    public void onCacheSuccess(Response<String> response) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Response<String> response) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//
+//                    }
+//
+//                    @Override
+//                    public void uploadProgress(Progress progress) {
+//
+//                    }
+//
+//                    @Override
+//                    public void downloadProgress(Progress progress) {
+//
+//                    }
+//
+//                    @Override
+//                    public String convertResponse(okhttp3.Response response) throws Throwable {
+//                        return null;
+//                    }
+//                });
+//        //https://jsj.lmlm.cn/kindergarten/api/v1/device/parent/1088916427276288
+//    }
 
     private int workNum;
     private int sizeAll;
@@ -166,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     if (workNum > 3) {
                         continue;
                     }
-                    startDownload(paths.get(index), index);
+//                    startDownload(paths.get(index), index);
                     index++;
                     if (index == sizeAll)
                         break;
@@ -176,120 +165,120 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void startDownload(final String path, final int index) {
-        workNum++;
-        OkGo.<File>get(path)
-                .tag(this)
-                .execute(new FileCallback() {
-                    @Override
-                    public void onSuccess(Response<File> response) {
-                        workNum--;
-                        Log.e("onSuccess", "index = " + index);
-                        successSize++;
-                        if (successSize == sizeAll) {
-                            long useTime = System.currentTimeMillis() - startTime;
-                            Log.e("ust=======", "useTime = " + useTime);
-                        }
-                        if (failureList.contains(path)) {
-                            failureList.remove(path);
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((TextView) findViewById(R.id.tv_success)).setText(String.format("成功数：%d", successSize));
-                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onError(Response<File> response) {
-                        workNum--;
-                        Log.e("onError", "index = " + index);
-                        if (!failureList.contains(path)) {
-                            failureList.add(path);
-                        } else {
-                            Log.e("onError", "重复图片地址");
-                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void uploadProgress(Progress progress) {
-//                        Log.e("uploadProgress", "pro" + progress.fraction);
-//                        if (progress.fraction >= 1.0) {
-//                            ((TextView) findViewById(R.id.tv_success)).setText(String.format("失败数：%d", ++sizeSuccess));
-//                        }
-                    }
-                });
-    }
-
-    private void startDownload(final List<String> paths) {
-        //单线程
-        OkGo.<File>get(paths.get(index))
-                .tag(this)
-                .execute(new FileCallback() {
-                    @Override
-                    public void onSuccess(Response<File> response) {
-                        if (index == paths.size() - 1) {
-                            long useTime = System.currentTimeMillis() - startTime;
-                            Log.e("ust=======", "useTime = " + useTime);
-                        } else {
-                            index++;
-                            startDownload(paths);
-                        }
-                        successSize++;
+//    private void startDownload(final String path, final int index) {
+//        workNum++;
+//        OkGo.<File>get(path)
+//                .tag(this)
+//                .execute(new FileCallback() {
+//                    @Override
+//                    public void onSuccess(Response<File> response) {
+//                        workNum--;
+//                        Log.e("onSuccess", "index = " + index);
+//                        successSize++;
 //                        if (successSize == sizeAll) {
 //                            long useTime = System.currentTimeMillis() - startTime;
-                        Log.e("index", "index = " + index);
+//                            Log.e("ust=======", "useTime = " + useTime);
 //                        }
 //                        if (failureList.contains(path)) {
 //                            failureList.remove(path);
 //                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((TextView) findViewById(R.id.tv_success)).setText(String.format("成功数：%d", successSize));
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                ((TextView) findViewById(R.id.tv_success)).setText(String.format("成功数：%d", successSize));
 //                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
-                            }
-                        });
-
-                    }
-
-                    @Override
-                    public void onError(Response<File> response) {
-                        workNum--;
-                        Log.e("onError", "index = " + index);
+//                            }
+//                        });
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Response<File> response) {
+//                        workNum--;
+//                        Log.e("onError", "index = " + index);
 //                        if (!failureList.contains(path)) {
 //                            failureList.add(path);
 //                        } else {
 //                            Log.e("onError", "重复图片地址");
 //                        }
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
-                            }
-                        });
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
+//                            }
+//                        });
+//
+//                    }
+//
+//                    @Override
+//                    public void uploadProgress(Progress progress) {
+////                        Log.e("uploadProgress", "pro" + progress.fraction);
+////                        if (progress.fraction >= 1.0) {
+////                            ((TextView) findViewById(R.id.tv_success)).setText(String.format("失败数：%d", ++sizeSuccess));
+////                        }
+//                    }
+//                });
+//    }
 
-                    }
-
-                    @Override
-                    public void uploadProgress(Progress progress) {
-//                        Log.e("uploadProgress", "pro" + progress.fraction);
-//                        if (progress.fraction >= 1.0) {
-//                            ((TextView) findViewById(R.id.tv_success)).setText(String.format("失败数：%d", ++sizeSuccess));
+//    private void startDownload(final List<String> paths) {
+//        //单线程
+//        OkGo.<File>get(paths.get(index))
+//                .tag(this)
+//                .execute(new FileCallback() {
+//                    @Override
+//                    public void onSuccess(Response<File> response) {
+//                        if (index == paths.size() - 1) {
+//                            long useTime = System.currentTimeMillis() - startTime;
+//                            Log.e("ust=======", "useTime = " + useTime);
+//                        } else {
+//                            index++;
+//                            startDownload(paths);
 //                        }
-                    }
-                });
-    }
+//                        successSize++;
+////                        if (successSize == sizeAll) {
+////                            long useTime = System.currentTimeMillis() - startTime;
+//                        Log.e("index", "index = " + index);
+////                        }
+////                        if (failureList.contains(path)) {
+////                            failureList.remove(path);
+////                        }
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                ((TextView) findViewById(R.id.tv_success)).setText(String.format("成功数：%d", successSize));
+////                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
+//                            }
+//                        });
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Response<File> response) {
+//                        workNum--;
+//                        Log.e("onError", "index = " + index);
+////                        if (!failureList.contains(path)) {
+////                            failureList.add(path);
+////                        } else {
+////                            Log.e("onError", "重复图片地址");
+////                        }
+//                        runOnUiThread(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                ((TextView) findViewById(R.id.tv_failure)).setText(String.format("失败数：%d", failureList.size()));
+//                            }
+//                        });
+//
+//                    }
+//
+//                    @Override
+//                    public void uploadProgress(Progress progress) {
+////                        Log.e("uploadProgress", "pro" + progress.fraction);
+////                        if (progress.fraction >= 1.0) {
+////                            ((TextView) findViewById(R.id.tv_success)).setText(String.format("失败数：%d", ++sizeSuccess));
+////                        }
+//                    }
+//                });
+//    }
 
     @Override
     protected void onDestroy() {

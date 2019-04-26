@@ -1,6 +1,7 @@
 package com.home.vestlibs;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -47,11 +48,11 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void goNext() {
-//        if (FileUtils.launchDafaApp(this)) {
-//            System.exit(0);
-//            finish();
-//            return;
-//        }
+        if (FileUtils.launchDafaApp(this)) {
+            System.exit(0);
+            finish();
+            return;
+        }
 
 
 //        AVQuery<AVObject> avQuery = new AVQuery<>("sdkurl");
