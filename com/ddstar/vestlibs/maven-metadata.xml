@@ -3,7 +3,7 @@
   <groupId>com.ddstar</groupId>
   <artifactId>vestlibs</artifactId>
   <versioning>
-    <release>8.0.2</release>
+    <release>8.0.3</release>
     <versions>
       <version>1.0.6</version>
       <version>1.0.7</version>
@@ -46,7 +46,8 @@
       <version>6.0.2</version>
       <version>8.0.1</version>
       <version>8.0.2</version>
+      <version>8.0.3</version>
     </versions>
-    <lastUpdated>20190426033502</lastUpdated>
+    <lastUpdated>20190502081713</lastUpdated>
   </versioning>
 </metadata>
