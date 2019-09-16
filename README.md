@@ -23,8 +23,8 @@
      implementation 'com.ddstar:vestlibs:7.0.2'
      //mjqq 使用
       implementation 'com.ddstar:vestlibs:5.0.4'
-       //mjmmmm 使用
-      implementation 'com.ddstar:vestlibs:6.0.1'
+       //mj157 使用
+      implementation 'com.ddstar:vestlibs:9.0.1'
    ```
 * 在application的onCreat方法调用
 ```
