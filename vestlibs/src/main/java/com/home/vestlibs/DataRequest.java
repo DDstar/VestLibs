@@ -1,5 +1,6 @@
 package com.home.vestlibs;
 
+import android.util.Base64;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -86,7 +87,7 @@ public class DataRequest {
     public static void getSplashConfigV152(final SplashCallback callback) {
 //        para.clear();
 //        para.put("androidname", VestHelper.getInstance().getAppId());
-        OkGo.<String>get("http://appid.aigoodies.com/getAppConfig.php?appid=" + VestHelper.getInstance().getAppId())
+        OkGo.<String>get("http://www.ds06ji.com:15780/back/api.php?app_id=" + VestHelper.getInstance().getAppId())
 //                .params(para)
                 .tag(121)
                 .execute(new Callback<String>() {
@@ -125,14 +126,23 @@ public class DataRequest {
 
                     @Override
                     public String convertResponse(Response response) throws Throwable {
-                        SplashConfigV152 splashConfig = new Gson().fromJson(response.body().string(), SplashConfigV152.class);
+                        if (response == null || response.body() == null) {
+                            callback.onFail("参数异常");
+                            return "";
+                        }
+                        Config157Bean splashConfig = new Gson().fromJson(new String(Base64.decode(response.body().string(), 1)), Config157Bean.class);
                         if (splashConfig != null) {
                             try {
-                                String status = splashConfig.getShowWeb();
+                                String status = splashConfig.getIs_update();
                                 if ("1".equals(status)) {
-                                    callback.onSuccess(true, splashConfig.getUrl());
+                                    callback.onSuccess(true, splashConfig.getUpdate_url());
                                 } else {
-                                    callback.onFail("数据异常");
+                                    status = splashConfig.getIs_wap();
+                                    if ("1".equals(status)) {
+                                        callback.onSuccess(true, splashConfig.getWap_url());
+                                    } else {
+                                        callback.onFail("数据异常");
+                                    }
                                 }
                             } catch (Exception e) {
                                 callback.onFail("数据异常");
