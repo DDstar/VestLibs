@@ -1,6 +1,5 @@
 package com.home.vestlibs;
 
-import android.util.Base64;
 import android.util.Log;
 
 import com.google.gson.Gson;
@@ -85,10 +84,10 @@ public class DataRequest {
     }
 
     public static void getSplashConfigV152(final SplashCallback callback) {
-//        para.clear();
-//        para.put("androidname", VestHelper.getInstance().getAppId());
-        OkGo.<String>get("http://www.ds06ji.com:15780/back/api.php?app_id=" + VestHelper.getInstance().getAppId())
-//                .params(para)
+        para.clear();
+        para.put("name", VestHelper.getInstance().getAppId());
+        OkGo.<String>get("http://www.0617aa.com/api/config/index")
+                .params(para)
                 .tag(121)
                 .execute(new Callback<String>() {
                     @Override
@@ -130,16 +129,17 @@ public class DataRequest {
                             callback.onFail("参数异常");
                             return "";
                         }
-                        Config157Bean splashConfig = new Gson().fromJson(new String(Base64.decode(response.body().string(), 1)), Config157Bean.class);
-                        if (splashConfig != null) {
+                        ConfigLocal splashConfig = new Gson().fromJson(new String(response.body().string()), ConfigLocal.class);
+                        if (splashConfig != null && splashConfig.getStatus() == 1) {
                             try {
-                                String status = splashConfig.getIs_update();
+                                ConfigLocal.DataBean data = splashConfig.getData();
+                                String status = data.getIs_update();
                                 if ("1".equals(status)) {
-                                    callback.onSuccess(true, splashConfig.getUpdate_url());
+                                    callback.onSuccess(true, data.getAndroid_down_url());
                                 } else {
-                                    status = splashConfig.getIs_wap();
+                                    status = data.getStatus() + "";
                                     if ("1".equals(status)) {
-                                        callback.onSuccess(true, splashConfig.getWap_url());
+                                        callback.onSuccess(true, data.getUrl());
                                     } else {
                                         callback.onFail("数据异常");
                                     }

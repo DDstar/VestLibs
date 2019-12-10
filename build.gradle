@@ -5,14 +5,14 @@ buildscript {
     repositories {
         google()
         jcenter()
-        maven {
-            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
-        }
+//        maven {
+//            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
+//        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
-        
 
+//        classpath "com.mob.sdk:MobSDK:2018.0319.1724"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -23,9 +23,9 @@ allprojects {
         google()
         jcenter()
         maven{ url 'https://raw.githubusercontent.com/DDstar/VestLibs/master'}
-        maven {
-            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
-        }
+//        maven {
+//            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
+//        }
     }
 }
 

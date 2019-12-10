@@ -5,8 +5,8 @@ android {
     defaultConfig {
         minSdkVersion 19
         targetSdkVersion 27
-        versionCode 53
-        versionName "9.0.1"
+        versionCode 54
+        versionName "10.0.1"
     }
     android {
         lintOptions {
@@ -50,5 +50,5 @@ dependencies {
     api 'cn.jiguang.sdk:jcore:1.2.1'
     api 'com.google.code.gson:gson:2.8.5'
 //    implementation project(':yqcdownload')
-    api ('cn.leancloud.android:avoscloud-sdk:4.7.10')
+//    api ('cn.leancloud.android:avoscloud-sdk:4.7.10')
 }
