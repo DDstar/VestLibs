@@ -18,27 +18,19 @@
 ```
    * app的module添加依赖
    ```
-
-    //mjxxx使用
-     implementation 'com.ddstar:vestlibs:7.0.2'
-     //mjqq 使用
-      implementation 'com.ddstar:vestlibs:5.0.4'
-       //mj157 使用
-      implementation 'com.ddstar:vestlibs:9.0.1'
+      implementation 'com.ddstar:vestlibs:20.02.12'
    ```
 * 在application的onCreat方法调用
 ```
  public static void init(Application application, Class mainClass, int splashRes, String appId, String applicationId)
- //mjmmm
- public static void init(Application application, Class mainClass, int splashRes, String xx,String ids, String applicationId)
+```
+* 需要修改强更页面的图片的话，在application的onCreat方法调用
+```
+   VestHelper.getInstance().setDownBg(R.drawable.bg_spdate);
 ```
 
 * 去掉应用的启动页配置
 库里面已经配置了启动页
-***
-* 4.1.5 mjxxx
-* 2.10.8 mjxxx 马甲别人
-* 5.0.3 mjqq同事介绍 待修改
-* 6.0.1 mjmmmmm leancloud后台
-* 8.0.2 mjttt 152
-完美运行
+
+完美
+库里面已经配置了启动页运行
