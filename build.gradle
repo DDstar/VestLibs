@@ -5,9 +5,6 @@ buildscript {
     repositories {
         google()
         jcenter()
-//        maven {
-//            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
-//        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.0'
@@ -23,9 +20,6 @@ allprojects {
         google()
         jcenter()
         maven{ url 'https://raw.githubusercontent.com/DDstar/VestLibs/master'}
-//        maven {
-//            url "http://mvn.leancloud.cn/nexus/content/repositories/public"
-//        }
     }
 }
 
