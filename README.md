@@ -22,7 +22,15 @@
    ```
 * 在application的onCreat方法调用
 ```
- public static void init(Application application, Class mainClass, int splashRes, String appId, String applicationId)
+    /**
+     * 
+     * @param application
+     * @param mainClass 接口关闭要跳转的页面
+     * @param splashRes 启动页图片res
+     * @param appId 接口开关id
+     * @param applicationId 应用的appId
+     */
+ VestHelper.init(this, MainActivity.class, R.drawable.bg_spdate, "016", BuildConfig.APPLICATION_ID);
 ```
 * 需要修改强更页面的图片的话，在application的onCreat方法调用
 ```
